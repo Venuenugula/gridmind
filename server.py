@@ -5,7 +5,9 @@ from env.models import Action
 app = FastAPI()
 env = GridEnv()
 
-
+@app.get("/")
+def home():
+    return {"status": "GridMind running"}
 @app.post("/reset")
 async def reset():
     return (await env.reset()).dict()
