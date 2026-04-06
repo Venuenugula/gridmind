@@ -1,0 +1,20 @@
+[project]
+name = "gridmind"
+version = "0.1.0"
+description = "GridMind OpenEnv environment"
+authors = [
+    {name = "Venu Enugula"},
+    {name="Santhosh kandi}
+]
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "numpy",
+    "openai",
+    "openenv-core"
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
