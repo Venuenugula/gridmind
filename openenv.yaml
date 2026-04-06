@@ -1,0 +1,21 @@
+from fastapi import FastAPI
+from env.grid_env import GridEnv
+from env.models import Action
+
+app = FastAPI()
+env = GridEnv()
+
+
+@app.post("/reset")
+async def reset():
+    return (await env.reset()).dict()
+
+
+@app.post("/step")
+async def step(action: dict):
+    return (await env.step(Action(**action))).dict()
+
+
+@app.get("/state")
+def state():
+    return env.state().dict()
