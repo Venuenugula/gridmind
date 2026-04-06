@@ -3,9 +3,10 @@ name = "gridmind"
 version = "0.1.0"
 description = "GridMind OpenEnv environment"
 authors = [
-    {name = "Venu Enugula"},
-    {name="Santhosh kandi}
+    { name = "Venu Enugula" },
+    { name = "Santhosh Kandi" }
 ]
+
 dependencies = [
     "fastapi",
     "uvicorn",
