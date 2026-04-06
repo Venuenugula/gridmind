@@ -1,3 +1,13 @@
+---
+title: GridMind v3
+emoji: ⚡
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_file: server.py
+pinned: false
+---
+
 # 🚀 GridMind v3  
 ### A Benchmark Environment for Autonomous Energy Grid Optimization under Uncertainty
 
