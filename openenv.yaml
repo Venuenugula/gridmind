@@ -1,21 +1,45 @@
-from fastapi import FastAPI
-from env.grid_env import GridEnv
-from env.models import Action
+spec_version: 1
+name: gridmind
+type: space
+runtime: fastapi
+app: server.app:app
+port: 7860
 
-app = FastAPI()
-env = GridEnv()
+tasks:
+  - id: stable_demand
+    description: Predictable demand and supply — baseline stability challenge
+    difficulty: easy
+    max_steps: 12
+  - id: peak_load
+    description: High demand spikes requiring rapid multi-source response
+    difficulty: medium
+    max_steps: 12
+  - id: renewable_failure
+    description: Renewable supply collapse under compounding stress conditions
+    difficulty: hard
+    max_steps: 12
+  - id: grid_crisis
+    description: Combined peak demand surge with renewable collapse and market shocks
+    difficulty: expert
+    max_steps: 12
 
+observation_space:
+  - demand
+  - renewable_supply
+  - thermal_capacity
+  - battery_storage
+  - price_market
+  - outage_risk
+  - weather_factor
+  - time_of_day
+  - day_of_week
 
-@app.post("/reset")
-async def reset():
-    return (await env.reset()).dict()
+action_space:
+  - buy_power
+  - use_thermal
+  - charge_battery
+  - discharge_battery
 
-
-@app.post("/step")
-async def step(action: dict):
-    return (await env.step(Action(**action))).dict()
-
-
-@app.get("/state")
-def state():
-    return env.state().dict()
+inference:
+  script: inference.py
+  requires_llm: true
